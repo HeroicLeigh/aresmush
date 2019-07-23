@@ -86,7 +86,7 @@ BASIC CONTAINERS
 <<<<<<< HEAD
 .app-status, #console, #console pre, code, #sendMsg, #sendMsg2 {
 =======
-.app-status, #console, #console pre, code, #sendMsg, #sendMsg2, #manageLog { 
+.app-status, #console, #console pre, code, #sendMsg, #sendMsg2, #manageLog {
 >>>>>>> upstream/master
     white-space: pre-wrap;
     background-color: black;
@@ -345,7 +345,7 @@ BOOTSTRAP OVERRIDES
 .panel-default > .panel-heading {
     background-color: $border-color;
     border-color: $border-color;
-    color: #999
+    color: #999;
 }
 
 .btn-primary {
