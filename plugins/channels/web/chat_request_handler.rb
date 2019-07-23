@@ -14,7 +14,8 @@ module AresMUSH
           key: c.name.downcase,
           title: c.name,
           enabled: Channels.is_on_channel?(enactor, c),
-          allowed: Channels.can_use_channel(enactor, c),
+          can_join: Channels.can_join_channel?(enactor, c),
+          can_talk: Channels.can_talk_on_channel?(enactor, c),
           muted: Channels.is_muted?(enactor, c),
           last_activity: c.last_activity,
           is_page: false,
@@ -26,6 +27,7 @@ module AresMUSH
           }},
           messages: Channels.is_on_channel?(enactor, c) ? c.messages.map { |m| {
             message: Website.format_markdown_for_html(m['message']),
+            id: m['id'],
             timestamp: OOCTime.local_long_timestr(enactor, m['timestamp']) }} : nil,
           }
         end
@@ -38,7 +40,8 @@ module AresMUSH
                key: t.id,
                title: t.title_without_viewer(enactor),
                enabled: true,
-               allowed: true,
+               can_join: true,
+               can_talk: true,
                muted: false,
                is_page: true,
                is_unread: Page.is_thread_unread?(t, enactor),
@@ -51,6 +54,7 @@ module AresMUSH
                }},
                messages: t.sorted_messages.map { |p| {
                   message: Website.format_markdown_for_html(p.message),
+                  id: p.id,
                   timestamp: OOCTime.local_long_timestr(enactor, p.created_at)
                   }}
             }

@@ -31,6 +31,8 @@ module AresMUSH
           return ChannelDeleteCmd
         when "desc"
           return ChannelDescCmd
+        when "info"
+          return ChannelInfoCmd
         when "mute", "unmute"
           return ChannelMuteCmd
         when "join"
@@ -47,7 +49,7 @@ module AresMUSH
           return ChannelRenameCmd
         when "report"
           return ChannelReportCmd
-        when "roles"
+        when "joinroles", "talkroles"
           return ChannelRolesCmd
         when "title"
           return ChannelTitleCmd
@@ -100,6 +102,8 @@ module AresMUSH
         return LeaveChannelRequestHandler
       when "muteChannel"
         return MuteChannelRequestHandler
+      when "reportChat"
+        return ReportChatRequestHandler
       end
     end
     

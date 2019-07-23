@@ -162,7 +162,8 @@ module AresMUSH
         description: "Admin business.",
         color: "%xr")
       channel.default_alias = [ 'a', 'ad', 'adm' ]
-      channel.roles.add admin_role
+      channel.join_roles.add admin_role
+      channel.talk_roles.add admin_role
       channel.save
   
   
@@ -187,7 +188,7 @@ module AresMUSH
       }
      
       categories.each do |name, color|
-        JobCategory.creat(name: name, color: color)
+        JobCategory.create(name: name, color: color)
       end
           
       
