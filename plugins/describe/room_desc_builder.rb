@@ -26,8 +26,8 @@ module AresMUSH
       end
     
       def self.weather(room)
-        return nil if !AresMUSH::Weather.is_enabled? 
-        w = Weather.weather_for_area(room.area_name)
+        return nil if !AresMUSH::OpenWeather.is_enabled? 
+        w = Openweather.weather_for_area(room.area_name)
         w ? "%R%R#{w}" : nil
       end
     end
