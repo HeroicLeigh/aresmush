@@ -14,20 +14,20 @@ module AresMUSH
       case cmd.root
       when "idle"
         case cmd.switch
-        when "action", "gone", "npc", "dead", "warn", "roster"
+        when "action", "gone", "npc", "dead", "warn", "roster", "set"
           return IdleActionCmd
         when "execute"
           return IdleExecuteCmd
         when "note"
           return IdleNotesCmd
+        when "now"
+          return IdleSetCmd
         when "queue", nil
           return IdleQueueCmd
         when "preview"
           return IdlePreviewCmd
         when "remove"
           return IdleRemoveCmd
-        when "set"
-          return IdleSetCmd
         when "start"
           return IdleStartCmd
         end
@@ -75,6 +75,11 @@ module AresMUSH
         return ClaimRosterRequestHandler
       end
       nil
+    end
+    
+    def self.check_config
+      validator = IdleConfigValidator.new
+      validator.validate
     end
   end
 end

@@ -27,11 +27,6 @@ module AresMUSH
          when nil
            return DamageCmd
          end
-       when "gear"
-         case cmd.switch
-         when "check"
-           return GearCheckCmd
-         end
        when "treat"
          return TreatCmd
        when "armor"
@@ -50,13 +45,6 @@ module AresMUSH
            return HealingCmd
          when "scan"
            return HealScanCmd
-         end
-       when "hospital"
-         case cmd.switch
-         when "list"
-           return HospitalsCmd
-         when "on", "off"
-           return HospitalSetCmd
          end
        when "mount"
          if (cmd.args)
@@ -206,6 +194,11 @@ module AresMUSH
       when "stopCombat"
         return StopCombatRequestHandler
       end
+    end
+    
+    def self.check_config
+      validator = FS3CombatConfigValidator.new
+      validator.validate
     end
   end
 end

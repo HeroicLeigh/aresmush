@@ -76,7 +76,7 @@ fs3combat:
     Target:
       hitloc: Target
       weapon: Unarmed
-      defense_skill: None
+      defense_skill: 1
   shortcuts:
     combat/skill: combat/summary
     combat/skills: combat/summary
@@ -85,7 +85,6 @@ fs3combat:
     combat/remove: combat/leave
     combat/hitlocs: combat/hitloc
     vehicles: vehicle
-    hospitals: hospital/list
     healing: heal/list
     weapons: weapon
     mounts: mount

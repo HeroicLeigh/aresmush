@@ -99,6 +99,8 @@ module AresMUSH
           return CreateRequestCmd
         when "mail"
           return RequestMailCmd
+        when "new"
+          return RequestNewCmd
         when nil
           if (!cmd.args)
             return ListRequestsCmd
@@ -152,6 +154,11 @@ module AresMUSH
         return SearchJobsRequestHandler
       end
       nil
+    end
+    
+    def self.check_config
+      validator = JobsConfigValidator.new
+      validator.validate
     end
   end
 end
